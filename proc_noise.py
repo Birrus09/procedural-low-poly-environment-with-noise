@@ -38,28 +38,125 @@ def biggify(source, width, factor):
 
 def convolution(source, width, height):
     conv_noise = []
+
+
+    
     for i in range(width*height-1):
-        #top left corner
-        if i == 0:
-            pass
+        #top side
+        if i < width:
+            #top right corner
+            if i == width - 1:
+                total = 0
+                for j in range(0, 1):
+                    for k in range(-1, 0):
+                        total += source[j*height+i+k]
+                    total /= 9
+                    conv_noise.append(total)
+
+            #top left corner
+            if i == 0:
+                total = 0
+                for j in range(0, 1):
+                    for k in range(0, 1):
+                        total += source[j*height+i+k]
+                total /= 9
+                conv_noise.append(total)
+
+            else:
+                total = 0
+                for j in range(0, 1):
+                    for k in range(-1, 1):
+                        total += source[j*height+i+k]
+                total /= 9
+                conv_noise.append(total)
+
         #left side
         if i % width == 0:
-            #bottom lef corner
+            #bottom left corner
             if i == width * (height - 1):
-                pass
-            pass
+                total = 0
+                for j in range(-1, 0):
+                    for k in range(0, 1):
+                        total += source[j*height+i+k]
+                total /= 9
+                conv_noise.append(total)
+
+            #top left corner
+            if i == 0:
+                total = 0
+                for j in range(0, 1):
+                    for k in range(0, 1):
+                        total += source[j*height+i+k]
+                total /= 9
+                conv_noise.append(total)
+
+            
+
         #bottom side
         if i > width * (height - 1):
-            pass
+            
             #bottom right corner
             if i == (width*height-1):
-                pass
+                total = 0
+                for j in range(-1, 0):
+                    for k in range(-1, 0):
+                        total += source[j*height+i+k]
+                total /= 9
+                conv_noise.append(total)
+
+            #bottom left corner
+            if i == width * (height - 1):
+                total = 0
+                for j in range(-1, 0):
+                    for k in range(0, 1):
+                        total += source[j*height+i+k]
+                total /= 9
+                conv_noise.append(total)
+
+            else:
+                total = 0
+                for j in range(-1, 0):
+                    for k in range(-1, 1):
+                        total += source[j*height+i+k]
+                total /= 9
+                conv_noise.append(total)
+
+
         #right side
         if i % width == width - 1:
             #top right
             if i == width - 1:
-                pass
-            pass
+                total = 0
+                for j in range(0, 1):
+                    for k in range(-1, 0):
+                        total += source[j*height+i+k]
+                    total /= 9
+                    conv_noise.append(total)
+            #bottom right corner
+            if i == (width*height-1):
+                total = 0
+                for j in range(-1, 0):
+                    for k in range(-1, 0):
+                        total += source[j*height+i+k]
+                total /= 9
+                conv_noise.append(total)
+
+            else:
+                total = 0
+                for j in range(-1, 1):
+                    for k in range(-1, 0):
+                        total += source[j*height+i+k]
+                total /= 9
+                conv_noise.append(total)
+
+        else:
+            total = 0
+            for j in range(-1, 1):
+                for k in range(-1, 1):
+                    total += source[j*height+i+k]
+            total /= 9
+            conv_noise.append(total)        
+
 
 
 Noise1 = ran_noise_generation(108, 72)
