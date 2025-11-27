@@ -36,11 +36,11 @@ def biggify(source, width, factor):
                     big_noise.append(source[idx])
     return big_noise
 
+
+
 def convolution(source, width, height):
     conv_noise = []
 
-
-    
     for i in range(width*height-1):
         #top side
         if i < width:
@@ -50,7 +50,7 @@ def convolution(source, width, height):
                 for j in range(0, 1):
                     for k in range(-1, 0):
                         total += source[j*height+i+k]
-                    total /= 9
+                    total /= 4
                     conv_noise.append(total)
 
             #top left corner
@@ -59,7 +59,7 @@ def convolution(source, width, height):
                 for j in range(0, 1):
                     for k in range(0, 1):
                         total += source[j*height+i+k]
-                total /= 9
+                total /= 4
                 conv_noise.append(total)
 
             else:
@@ -67,7 +67,7 @@ def convolution(source, width, height):
                 for j in range(0, 1):
                     for k in range(-1, 1):
                         total += source[j*height+i+k]
-                total /= 9
+                total /= 6
                 conv_noise.append(total)
 
         #left side
@@ -78,7 +78,7 @@ def convolution(source, width, height):
                 for j in range(-1, 0):
                     for k in range(0, 1):
                         total += source[j*height+i+k]
-                total /= 9
+                total /= 4
                 conv_noise.append(total)
 
             #top left corner
@@ -87,10 +87,16 @@ def convolution(source, width, height):
                 for j in range(0, 1):
                     for k in range(0, 1):
                         total += source[j*height+i+k]
-                total /= 9
+                total /= 4
                 conv_noise.append(total)
 
-            
+            else:
+                total = 0
+                for j in range(-1, 1):
+                    for k in range(0, 1):
+                        total += source[j*height+i+k]
+                total /= 6
+                conv_noise.append(total)
 
         #bottom side
         if i > width * (height - 1):
@@ -101,7 +107,7 @@ def convolution(source, width, height):
                 for j in range(-1, 0):
                     for k in range(-1, 0):
                         total += source[j*height+i+k]
-                total /= 9
+                total /= 4
                 conv_noise.append(total)
 
             #bottom left corner
@@ -110,7 +116,7 @@ def convolution(source, width, height):
                 for j in range(-1, 0):
                     for k in range(0, 1):
                         total += source[j*height+i+k]
-                total /= 9
+                total /= 4
                 conv_noise.append(total)
 
             else:
@@ -118,7 +124,7 @@ def convolution(source, width, height):
                 for j in range(-1, 0):
                     for k in range(-1, 1):
                         total += source[j*height+i+k]
-                total /= 9
+                total /= 6
                 conv_noise.append(total)
 
 
@@ -130,7 +136,7 @@ def convolution(source, width, height):
                 for j in range(0, 1):
                     for k in range(-1, 0):
                         total += source[j*height+i+k]
-                    total /= 9
+                    total /= 4
                     conv_noise.append(total)
             #bottom right corner
             if i == (width*height-1):
@@ -138,7 +144,7 @@ def convolution(source, width, height):
                 for j in range(-1, 0):
                     for k in range(-1, 0):
                         total += source[j*height+i+k]
-                total /= 9
+                total /= 4
                 conv_noise.append(total)
 
             else:
@@ -146,7 +152,7 @@ def convolution(source, width, height):
                 for j in range(-1, 1):
                     for k in range(-1, 0):
                         total += source[j*height+i+k]
-                total /= 9
+                total /= 6
                 conv_noise.append(total)
 
         else:
@@ -157,8 +163,7 @@ def convolution(source, width, height):
             total /= 9
             conv_noise.append(total)    
 
-    return conv_noise    
-
+    return conv_noise
 
 
 Noise1 = ran_noise_generation(108, 72)
