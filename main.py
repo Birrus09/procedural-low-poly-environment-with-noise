@@ -1,7 +1,6 @@
 import pygame
-import proc_noise
 import worlds_managing
-import os
+
 
 
 worlds_dir = "/Worlds"
@@ -13,16 +12,30 @@ SCREEN_HEIGHT = 720
 
 
 
-worlds_managing.gen_terrain(worlds_managing.nodes_1080_720, proc_noise.Noise4_1)
+def show_map(map, mode = 'altitude'):
+    if mode == 'altitude':
+        for n in map:
+            a = int(max(min((n.altitude) + 128, 255),0))
+            pygame.draw.rect(screen, (a, a, a), (n.x, n.y, 10, 10))
+
+    if mode == 'temp':
+        for n in map:
+            a = int(n.altitude)
+            r = max(0, min(255, 128 + a))
+            g = 0
+            b = max(0, min(255, 127 - a))
+            pygame.draw.rect(screen, (r, g, b), (n.x, n.y, 10, 10))
+
+    if mode == 'biome':
+        for n in map:
+            if n.biome == 'mountain':
+                pygame.draw.rect(screen, (255, 255, 255), (n.x, n.y, 10, 10))
+            else:
+                pygame.draw.rect(screen, (0,0,0), (n.x, n.y, 10, 10))
+
+    
 
 
-def show_map(map):
-    for n in map:
-        a = int(n.altitude)
-        r = max(0, min(255, 128 + a))
-        g = 0
-        b = max(0, min(255, 127 - a))
-        pygame.draw.rect(screen, (r, g, b), (n.x, n.y, 10, 10))
 
 current_world = worlds_managing.load_world("Worlds/World1.txt")
 
@@ -51,12 +64,7 @@ while running:
     
     # Fill screen with black
     screen.fill((0, 0, 0))
-    show_map(current_world)
-    
-    # Update display
-    pygame.display.flip()
-
-pygame.quit()
+    show_map(current_world, "temp")
     
     # Update display
     pygame.display.flip()
