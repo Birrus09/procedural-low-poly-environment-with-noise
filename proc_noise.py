@@ -1,3 +1,4 @@
+
 import random
 
 
@@ -53,33 +54,8 @@ def convolution(source, width, height):
     conv_noise = []
 
     for i in range(width*height-1):
-        #top side
-        if i < width:
-            #top right corner
-            if i == width - 1:
-                total = 0
-                for j in range(0, 1):
-                    for k in range(-1, 0):
-                        total += source[j*height+i+k]
-                    total /= 4
-                    conv_noise.append(total)
-
-            #top left corner
-            if i == 0:
-                total = 0
-                for j in range(0, 1):
-                    for k in range(0, 1):
-                        total += source[j*height+i+k]
-                total /= 4
-                conv_noise.append(total)
-
-            else:
-                total = 0
-                for j in range(0, 1):
-                    for k in range(-1, 1):
-                        total += source[j*height+i+k]
-                total /= 6
-                conv_noise.append(total)
+        #top side fuck you nig
+        
 
         #left side
         if i % width == 0:
@@ -176,6 +152,7 @@ Noise2 = waterfall_noise_generation(108, 72, 154)
 Noise3 = biggify(ran_noise_generation(11, 11), 11, 3)
 
 Noise4_3 = convolution(biggify(ran_noise_generation(11, 11), 11, 3),33, 33)
+Noise4_3_2 = convolution(convolution(biggify(ran_noise_generation(11, 11), 11, 3),33, 33), 33, 33)
 
 
 Noise3 = biggify(ran_noise_generation(11, 11), 11, 3)
