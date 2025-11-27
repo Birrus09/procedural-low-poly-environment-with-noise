@@ -146,6 +146,9 @@ def convolution(source, width, height):
 
 
 Noise1 = ran_noise_generation(108, 72)
+
+
+
 Noise2 = waterfall_noise_generation(108, 72, 154)
 
 
@@ -153,6 +156,6 @@ Noise3 = biggify(ran_noise_generation(11, 11), 11, 3)
 
 Noise4_3 = convolution(biggify(ran_noise_generation(11, 11), 11, 3),33, 33)
 Noise4_3_2 = convolution(convolution(biggify(ran_noise_generation(11, 11), 11, 3),33, 33), 33, 33)
+Noise4_1 = convolution(ran_noise_generation(108, 72),108, 72)
+Noise4_1_2 = convolution(convolution(ran_noise_generation(108, 72),108, 72), 108, 72)
 
-
-Noise3 = biggify(ran_noise_generation(11, 11), 11, 3)
