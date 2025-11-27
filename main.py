@@ -39,6 +39,7 @@ def show_map(map, mode = 'altitude'):
 
 current_world = worlds_managing.load_world("Worlds/World1.txt")
 
+current_view = "temp"
 
 # Initialize Pygame
 pygame.init()
@@ -61,10 +62,22 @@ while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_1:
+                    current_view = "altitude"
+            elif event.key == pygame.K_2:
+                    current_view = "temp"
+            elif event.key == pygame.K_3:
+                    current_view = "biome"
+
+
+
+
+        
     
     # Fill screen with black
     screen.fill((0, 0, 0))
-    show_map(current_world, "temp")
+    show_map(current_world, current_view)
     
     # Update display
     pygame.display.flip()
