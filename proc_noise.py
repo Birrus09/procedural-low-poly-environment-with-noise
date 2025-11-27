@@ -155,12 +155,19 @@ def convolution(source, width, height):
                 for k in range(-1, 1):
                     total += source[j*height+i+k]
             total /= 9
-            conv_noise.append(total)        
+            conv_noise.append(total)    
+
+    return conv_noise    
 
 
 
 Noise1 = ran_noise_generation(108, 72)
 Noise2 = waterfall_noise_generation(108, 72, 154)
+
+
+Noise3 = biggify(ran_noise_generation(11, 11), 11, 3)
+
+Noise4_3 = convolution(biggify(ran_noise_generation(11, 11), 11, 3),33, 33)
 
 
 Noise3 = biggify(ran_noise_generation(11, 11), 11, 3)
