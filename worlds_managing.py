@@ -34,12 +34,10 @@ def load_world(world_dir):
 
     return destination_vector
 
-
-nodes_1080_720 = []
-
-for i in range(0,1080, 10):
-    for j in range(0,720, 10):
-        nodes_1080_720.append(node(i,j,0,"none"))
+def populate(nodes_map, x, y):
+    for i in range(0, x, 10):
+        for j in range(0, y, 10):
+            nodes_map.append(node(i,j,0,"none"))
 
 '''
 
