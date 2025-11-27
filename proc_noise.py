@@ -38,6 +38,17 @@ def biggify(source, width, factor):
 
 
 
+def biggify(source, width, factor):
+    big_noise = []
+    L = len(source)
+    for i in range(0, L, width):
+        for k in range(factor):
+            for z in range(i, i + width):
+                idx = min(z, L - 1)
+                for n in range(factor):
+                    big_noise.append(source[idx])
+    return big_noise
+
 def convolution(source, width, height):
     conv_noise = []
 
@@ -88,14 +99,6 @@ def convolution(source, width, height):
                     for k in range(0, 1):
                         total += source[j*height+i+k]
                 total /= 4
-                conv_noise.append(total)
-
-            else:
-                total = 0
-                for j in range(-1, 1):
-                    for k in range(0, 1):
-                        total += source[j*height+i+k]
-                total /= 6
                 conv_noise.append(total)
 
         #bottom side
@@ -163,7 +166,7 @@ def convolution(source, width, height):
             total /= 9
             conv_noise.append(total)    
 
-    return conv_noise
+    return conv_noise    
 
 
 Noise1 = ran_noise_generation(108, 72)
