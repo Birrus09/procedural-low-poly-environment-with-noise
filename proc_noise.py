@@ -36,6 +36,31 @@ def biggify(source, width, factor):
                     big_noise.append(source[idx])
     return big_noise
 
+def convolution(source, width, height):
+    conv_noise = []
+    for i in range(width*height-1):
+        #top left corner
+        if i == 0:
+            pass
+        #left side
+        if i % width == 0:
+            #bottom lef corner
+            if i == width * (height - 1):
+                pass
+            pass
+        #bottom side
+        if i > width * (height - 1):
+            pass
+            #bottom right corner
+            if i == (width*height-1):
+                pass
+        #right side
+        if i % width == width - 1:
+            #top right
+            if i == width - 1:
+                pass
+            pass
+
 
 Noise1 = ran_noise_generation(108, 72)
 Noise2 = waterfall_noise_generation(108, 72, 154)
