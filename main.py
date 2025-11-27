@@ -1,36 +1,19 @@
 import pygame
 import proc_noise
+import worlds_managing
+import os
+
+
+worlds_dir = "/Worlds"
 
 
 # Screen dimensions
-SCREEN_WIDTH = 330
-SCREEN_HEIGHT = 330
-
-class node():
-    def __init__(self, x, y, altitude, biome):
-        self.x = x
-        self.y = y
-        self.altitude = altitude
-        self.biome = biome
+SCREEN_WIDTH = 1080
+SCREEN_HEIGHT = 720
 
 
 
-def gen_terrain(map_nodes, noise):
-    if len(noise) >= len(map_nodes):
-        for i in range(len(map_nodes)):
-            map_nodes[i].altitude = noise[i]
-    else:
-        print("World too big!")
-
-
-
-nodes_World1 = []
-
-for i in range(0,SCREEN_WIDTH, 10):
-    for j in range(0,SCREEN_HEIGHT, 10):
-        nodes_World1.append(node(i,j,0,"none"))
-
-gen_terrain(nodes_World1, proc_noise.Noise3)
+worlds_managing.gen_terrain(worlds_managing.nodes_1080_720, proc_noise.Noise1)
 
 
 def show_map(map):
@@ -69,7 +52,7 @@ while running:
     
     # Fill screen with black
     screen.fill((0, 0, 0))
-    show_map(nodes_World1)
+    show_map(worlds_managing.nodes_1080_720)
     
     # Update display
     pygame.display.flip()
