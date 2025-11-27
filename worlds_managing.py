@@ -26,6 +26,17 @@ def save_world(world, file):
 
 
 
+def load_world(world_dir):
+    destination_vector = []
+    with open(world_dir, "r") as file:
+        dump = file.readlines()
+    for i in dump:
+        x, y, altitude, biome = i.strip().split(",")
+        destination_vector.append(node(int(x), int(y), float(altitude), biome))
+
+    return destination_vector
+
+
 nodes_1080_720 = []
 
 for i in range(0,1080, 10):
@@ -33,7 +44,7 @@ for i in range(0,1080, 10):
         nodes_1080_720.append(node(i,j,0,"none"))
 
 
-gen_terrain(nodes_1080_720, proc_noise.Noise4_1_2)
+gen_terrain(nodes_1080_720, proc_noise.Noise4_1)
 
 
 save_world(nodes_1080_720, "Worlds/World1.txt")
