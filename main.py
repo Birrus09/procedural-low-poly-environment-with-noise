@@ -38,7 +38,6 @@ def show_map(map, mode = 'altitude'):
 
 
 current_world = worlds_managing.load_world("Worlds/World1.txt")
-
 current_view = "temp"
 
 # Initialize Pygame
