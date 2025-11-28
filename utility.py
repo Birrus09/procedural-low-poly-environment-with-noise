@@ -2,14 +2,6 @@ import worlds_managing
 import proc_noise
 import os
 
-Worldsine = []
-worlds_managing.populate(Worldsine, 108, 72)
-worlds_managing.gen_terrain(Worldsine, proc_noise.Noise4_5)
-worlds_managing.save_world(Worldsine, "Worlds/worldsine.txt")
-
-
-
-
 while True:
     print("Options: 1) create world, 2) see worlds directory, 3) see noise presets, 4) craft custom noise, 5) quit")
     choice = int(input("command: "))
