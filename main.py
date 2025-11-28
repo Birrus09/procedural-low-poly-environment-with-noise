@@ -40,6 +40,15 @@ def show_map(map, mode = 'altitude'):
 current_world = worlds_managing.load_world("Worlds/World1.txt")
 current_view = "temp"
 
+
+print("select world to visualize:")
+for file in os.listdir("Worlds"):
+    if file.endswith(".txt"):
+        print(file)
+world_name = input("world name: ")
+current_world = worlds_managing.load_world("Worlds/" + world_name + ".txt")
+
+
 # Initialize Pygame
 pygame.init()
 
