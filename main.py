@@ -1,5 +1,6 @@
 import pygame
 import worlds_managing
+import os
 
 
 
@@ -29,15 +30,23 @@ def show_map(map, mode = 'altitude'):
     if mode == 'biome':
         for n in map:
             if n.biome == 'mountain':
-                pygame.draw.rect(screen, (255, 255, 255), (n.x, n.y, 10, 10))
+                pygame.draw.rect(screen, (200, 200, 200), (n.x, n.y, 10, 10))
+            if n.biome == 'beach':
+                pygame.draw.rect(screen, (50,100,30), (n.x, n.y, 10, 10))
+            if n.biome == 'ocean':
+                pygame.draw.rect(screen, (0, 0, 255), (n.x, n.y, 10, 10))
+            if n.biome == 'plains':
+                pygame.draw.rect(screen, (0, 255, 0), (n.x, n.y, 10, 10))
             else:
-                pygame.draw.rect(screen, (0,0,0), (n.x, n.y, 10, 10))
+                pygame.draw.rect(screen, (255,255,255), (n.x, n.y, 10, 10))
 
     
 
 
 
-current_world = worlds_managing.load_world("Worlds/World1.txt")
+
+
+current_world = worlds_managing.load_world("Worlds/testworld2.txt")
 current_view = "temp"
 
 
@@ -47,6 +56,9 @@ for file in os.listdir("Worlds"):
         print(file)
 world_name = input("world name: ")
 current_world = worlds_managing.load_world("Worlds/" + world_name + ".txt")
+
+
+
 
 
 # Initialize Pygame
