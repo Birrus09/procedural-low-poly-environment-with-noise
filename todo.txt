@@ -1,8 +1,8 @@
 fix biggify function
 add interactive console
 add CLI world manager (starting from utility)
-double sine wave noise (add offset)
 sum noises function
+noise clipper (scatter)
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -10,7 +10,7 @@ sum noises function
 
 
 
-
+double sine wave noise (add offset)        DONE
 test convolution function                  DONE
 open/save world file from .txt             DONE
 add biome view                             DONE
