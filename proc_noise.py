@@ -145,6 +145,22 @@ def DoubleSineWave(width, height, frequency, offset):
 
     return SineNoise
 
+def gatenoise(source, treshold, invert = False ):
+    gated_noise = []
+    for n in source:
+        if invert:
+            if n > treshold:
+                v = treshold
+            else:
+                v = n
+
+        else: 
+            if n < treshold:
+                v = -128
+            else:
+                v = n
+        gated_noise.append(v)
+    return gated_noise
 
 
 Noise1 = ran_noise_generation(108, 72)
