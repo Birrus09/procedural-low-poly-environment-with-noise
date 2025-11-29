@@ -1,6 +1,8 @@
 fix biggify function
 sum noises function (fix)
 finish biome generation
+add temperature layering
+fix preset noise loading using utility
 
 
 
