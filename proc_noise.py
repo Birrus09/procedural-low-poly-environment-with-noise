@@ -170,7 +170,7 @@ def sumnoise(source1, source2, weight1=0.5):
 
     for i in range(len(source1)):
         summed_noise.append((source1[i])*weight1 + (source2[i])*weight2)
-
+    return summed_noise
 
 
 Noise1 = ran_noise_generation(108, 72)
